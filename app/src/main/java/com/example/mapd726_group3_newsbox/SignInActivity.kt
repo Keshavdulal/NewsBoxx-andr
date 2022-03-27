@@ -1,23 +1,18 @@
 package com.example.mapd726_group3_newsbox
 
 
-import android.app.AlertDialog
 import android.app.ProgressDialog
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import com.example.mapd726_group3_newsbox.databinding.ActivitySignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import androidx.appcompat.app.ActionBar
 
-class SignIn : AppCompatActivity() {
+class SignInActivity : AppCompatActivity() {
 
     //ViewBinding
         private lateinit var binding:ActivitySignInBinding
@@ -57,7 +52,7 @@ class SignIn : AppCompatActivity() {
 
         //handle click open register activity
         binding.SignUpBtnTxt.setOnClickListener {
-            startActivity(Intent(this, SignUp::class.java))
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
 
         //handle click, begin login
@@ -121,7 +116,7 @@ class SignIn : AppCompatActivity() {
                 Toast.makeText(this, "LoggedIn as  $email", Toast.LENGTH_SHORT).show()
 
                 //open explore
-                startActivity(Intent(this, Profile::class.java))
+                startActivity(Intent(this, ProfileActivity::class.java))
                 finish()
             }
 
@@ -139,7 +134,7 @@ class SignIn : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser != null) {
             //user is already logged in
-            startActivity(Intent(this, Profile::class.java))
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 

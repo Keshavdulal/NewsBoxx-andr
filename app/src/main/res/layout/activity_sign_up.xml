@@ -7,7 +7,7 @@
     android:padding="30sp"
     android:orientation="vertical"
     android:textAlignment="textEnd"
-    tools:context=".SignUp">
+    tools:context=".SignUpActivity">
 
     <TextView
         android:id="@+id/textView8"

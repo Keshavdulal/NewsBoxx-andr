@@ -6,15 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AlertDialog
 import com.example.mapd726_group3_newsbox.databinding.ActivitySignUpBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class SignUp : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
     //ViewBinding
     private lateinit var binding: ActivitySignUpBinding
@@ -55,7 +52,7 @@ class SignUp : AppCompatActivity() {
 
         //handle click open register activity
         binding.SignInBtnTxt.setOnClickListener {
-            startActivity(Intent(this, SignIn::class.java))
+            startActivity(Intent(this, SignInActivity::class.java))
         }
 
         //handle click, begin signup
@@ -121,7 +118,7 @@ class SignUp : AppCompatActivity() {
                 Toast.makeText(this, "Account created with email $email", Toast.LENGTH_SHORT).show()
 
                 //open explore
-                startActivity(Intent( this, Profile::class.java))
+                startActivity(Intent( this, ProfileActivity::class.java))
                 finish()
             }
 

@@ -3,14 +3,14 @@ package com.example.mapd726_group3_newsbox.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapd726_group3_newsbox.Article
 import com.example.mapd726_group3_newsbox.R
 
-class RecyclerViewAdapter (private val mList: List<Article>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val mList: List<Article>, val onClick: (String) -> Unit) :
+    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,29 +25,37 @@ class RecyclerViewAdapter (private val mList: List<Article>) : RecyclerView.Adap
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val ItemsViewModel = mList[position]
+        val article = mList[position]
 
         // sets the image to the imageview from our itemHolder class
         //holder.imageView.setImageResource(ItemsViewModel.image)
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.title
+        holder.title.text = article.title
         // sets the text to the textview from our itemHolder class
-        holder.textView2.text = ItemsViewModel.body
+        holder.body.text = article.body
+
+        holder.source.text = article.source
+
+        holder.cardView.setOnClickListener {
+            onClick(article.url ?: "")
+        }
+
 
     }
 
     // return the number of the items in the list
-    override fun getItemCount(): Int
-    {
+    override fun getItemCount(): Int {
         return mList.size
     }
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-       // val imageView: ImageView = itemView.findViewWithTag(R.drawable.default_article)
-        val textView: TextView = itemView.findViewById(R.id.articleTitle)
-        val textView2: TextView = itemView.findViewById(R.id.articleBody)
+        // val imageView: ImageView = itemView.findViewWithTag(R.drawable.default_article)
+        val title: TextView = itemView.findViewById(R.id.articleTitle)
+        val body: TextView = itemView.findViewById(R.id.articleBody)
+        val source: TextView = itemView.findViewById(R.id.articleSource)
+        val cardView = itemView.findViewById<CardView>(R.id.card_view)
 
     }
 }

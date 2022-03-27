@@ -11,25 +11,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MAPD726Group3NewsBox">
-<!--        <activity-->
-<!--            android:name=".Detail"-->
-<!--            android:exported="false" />-->
+        <!--        <activity-->
+        <!--            android:name=".Detail"-->
+        <!--            android:exported="false" />-->
         <activity
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".Profile"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".Explore"-->
-<!--            android:exported="false"-->
-<!--            android:label="@string/title_activity_explore"-->
-<!--            android:theme="@style/Theme.MAPD726Group3NewsBox.NoActionBar" />-->
-        <activity
-            android:name=".SignUp"
+            android:name=".ArticleViewActivity"
             android:exported="false" />
         <activity
-            android:name=".SignIn"
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <!--        <activity-->
+        <!--            android:name=".Explore"-->
+        <!--            android:exported="false"-->
+        <!--            android:label="@string/title_activity_explore"-->
+        <!--            android:theme="@style/Theme.MAPD726Group3NewsBox.NoActionBar" />-->
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignInActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

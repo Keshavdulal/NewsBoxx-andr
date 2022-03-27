@@ -6,13 +6,4 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".category.NewsCategory5">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Fifth Fragment"
-        android:layout_gravity="center"
-        android:textSize="35sp" />
-</LinearLayout>
+    tools:context=".category.NewsCategory5"/>

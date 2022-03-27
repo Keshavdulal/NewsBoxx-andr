@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1049034237750",
+    "project_id": "newsbox-df019",
+    "storage_bucket": "newsbox-df019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049034237750:android:e794a270eb1f1b6313b597",
+        "android_client_info": {
+          "package_name": "com.example.mapd726_group3_newsbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1049034237750-sgurvuv5444o4jjripgsiq5o0r3o4uh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCstNYaHQOCf0obUbT0gQHAkyYHyaxXyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1049034237750-sgurvuv5444o4jjripgsiq5o0r3o4uh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

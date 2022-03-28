@@ -5,4 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeFragment"/>
+    tools:context=".HomeFragment">
+    <ImageButton
+        android:id="@+id/logoImg"
+        android:layout_width="match_parent"
+        android:layout_height="602dp"
+        android:layout_gravity="center"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/logo" />
+
+    <Button
+        android:id="@+id/profile_btn"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="30dp"
+        android:padding="5dp"
+        android:text="Go"
+        android:textSize="20sp"
+        app:cornerRadius="100sp" />
+</LinearLayout>

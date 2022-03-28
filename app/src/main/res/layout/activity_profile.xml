@@ -33,7 +33,7 @@
             android:visibility="gone"
             app:defaultNavHost="true"
             app:layout_constraintStart_toStartOf="parent"
-            app:navGraph="@navigation/news_navigation"
+            app:navGraph="@navigation/nav_graph"
             tools:layout_editor_absoluteY="123dp" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

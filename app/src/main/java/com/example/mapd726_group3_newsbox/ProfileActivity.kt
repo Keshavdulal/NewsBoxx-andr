@@ -87,7 +87,7 @@ class ProfileActivity : AppCompatActivity() {
 
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
-       // checkUser()
+        checkUser()
 
         //connection for reading from database
         database= FirebaseFirestore.getInstance()
@@ -373,8 +373,8 @@ class ProfileActivity : AppCompatActivity() {
 
         else {
             //user is null, user is not logged in, goto activity
-            startActivity(Intent(this, SignInActivity::class.java))
-            finish()
+            /*startActivity(Intent(this, SignInActivity::class.java))
+            finish()*/
         }
     }
 }

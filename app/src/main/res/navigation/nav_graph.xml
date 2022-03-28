@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_navigation"
+    app:startDestination="@id/signInFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mapd726_group3_newsbox.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.mapd726_group3_newsbox.CategoryFragment"
+        android:label="Category"
+        tools:layout="@layout/fragment_category" />
+    <fragment
+        android:id="@+id/alexaFragment"
+        android:name="com.example.mapd726_group3_newsbox.AlexaFragment"
+        android:label="Alexa"
+        tools:layout="@layout/fragment_alexa" />
+    <fragment
+        tools:layout="@layout/fragment_sign_up"
+        android:id="@+id/signUpFragment"
+        android:name="com.example.mapd726_group3_newsbox.onboarding.SignUpFragment"
+        android:label="SignUp" >
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_sign_in"
+        android:id="@+id/signInFragment"
+        android:name="com.example.mapd726_group3_newsbox.onboarding.SignInFragment"
+        android:label="SignIn" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.mapd726_group3_newsbox.ProfileFragment"
+        android:label="ProfileFragment" />
+</navigation>

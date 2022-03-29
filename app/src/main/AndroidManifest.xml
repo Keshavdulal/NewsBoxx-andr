@@ -16,9 +16,6 @@
             android:name=".ForgotPassword"
             android:exported="false" />
         <activity
-            android:name=".ArticleViewActivity"
-            android:exported="false" />
-        <activity
             android:name=".ProfileActivity"
             android:exported="false" />
 

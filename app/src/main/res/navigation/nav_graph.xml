@@ -30,6 +30,8 @@
         android:name="com.example.mapd726_group3_newsbox.onboarding.SignUpFragment"
         android:label="SignUp" >
         <action
+            app:popUpTo="@id/news_navigation"
+            app:popUpToInclusive="true"
             android:id="@+id/action_signUpFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
@@ -43,10 +45,24 @@
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_signInFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/news_navigation"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
+        tools:layout="@layout/frgament_profile"
         android:id="@+id/profileFragment"
         android:name="com.example.mapd726_group3_newsbox.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_articleViewFragment"
+            app:destination="@id/articleViewFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_article_view"
+        android:id="@+id/articleViewFragment"
+        android:name="com.example.mapd726_group3_newsbox.ArticleViewFragment"
+        android:label="ArticleViewFragment" >
+        <argument app:argType="string" android:name="url"/>
+    </fragment>
 </navigation>

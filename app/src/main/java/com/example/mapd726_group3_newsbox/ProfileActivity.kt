@@ -237,13 +237,13 @@ class ProfileActivity : AppCompatActivity() {
                             articleArrayList.add(map.toArticle(newsSource))
                         }
                     }
-                    val recyclerViewAdapter = RecyclerViewAdapter(articleArrayList){url->
+                    /*val recyclerViewAdapter = RecyclerViewAdapter(articleArrayList){url->
                         //on item click
                         val intent=Intent(Intent.ACTION_VIEW)
                         intent.data = Uri.parse(url)
                         startActivity(intent)
                     }
-                    recyclerview.adapter = recyclerViewAdapter
+                    recyclerview.adapter = recyclerViewAdapter*/
 
                 }
             }.addOnFailureListener{

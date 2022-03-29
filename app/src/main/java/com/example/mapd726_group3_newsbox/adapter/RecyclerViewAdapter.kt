@@ -3,14 +3,13 @@ package com.example.mapd726_group3_newsbox.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapd726_group3_newsbox.Article
 import com.example.mapd726_group3_newsbox.R
+import com.example.mapd726_group3_newsbox.databinding.CardViewDesignBinding
 
-class RecyclerViewAdapter (private val mList: List<Article>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(private val mList: List<Article>, private val onItemClick: (String) -> Unit ,private val onBookmark: (Article) -> Unit) :
+    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,29 +24,44 @@ class RecyclerViewAdapter (private val mList: List<Article>) : RecyclerView.Adap
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val ItemsViewModel = mList[position]
+        val article = mList[position]
 
-        // sets the image to the imageview from our itemHolder class
-        //holder.imageView.setImageResource(ItemsViewModel.image)
-
-        // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.title
-        // sets the text to the textview from our itemHolder class
-        holder.textView2.text = ItemsViewModel.body
+        holder.onBind(article, onItemClick,onBookmark)
 
     }
 
     // return the number of the items in the list
-    override fun getItemCount(): Int
-    {
+    override fun getItemCount(): Int {
         return mList.size
     }
 
     // Holds the views for adding it to image and text
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-       // val imageView: ImageView = itemView.findViewWithTag(R.drawable.default_article)
-        val textView: TextView = itemView.findViewById(R.id.articleTitle)
-        val textView2: TextView = itemView.findViewById(R.id.articleBody)
+
+        private val binding: CardViewDesignBinding = CardViewDesignBinding.bind(itemView)
+
+
+        fun onBind(article: Article, onItemClick: (String) -> Unit, onBookmark: (Article) -> Unit) {
+            binding.articleTitle.text = article.title
+            binding.articleBody.text = article.body
+            binding.articleSource.text = article.source
+            val imageResource = if (article.isBookmarked) R.drawable.ic_bookmark else R.drawable.ic_bookmark_border
+            binding.bookmarkImage.setImageResource(imageResource)
+            binding.cardView.setOnClickListener {
+                onItemClick(article.url ?: "")
+            }
+            binding.bookmarkImage.setOnClickListener {
+                if (!article.isBookmarked) {
+                    binding.bookmarkImage.setImageResource(R.drawable.ic_bookmark)
+                } else {
+                    binding.bookmarkImage.setImageResource(R.drawable.ic_bookmark_border)
+                }
+                article.isBookmarked = !article.isBookmarked
+                onBookmark(article)
+
+            }
+        }
+
 
     }
 }

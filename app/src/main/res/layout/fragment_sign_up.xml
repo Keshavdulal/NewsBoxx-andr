@@ -6,20 +6,21 @@
     android:layout_height="match_parent"
     android:padding="30sp"
     android:orientation="vertical"
-    tools:context=".SignIn">
+    android:textAlignment="textEnd"
+    tools:context=".SignUpActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40sp"
-        android:text="Welcome Back"
+        android:text="Sign Up"
         android:textStyle="bold"
         android:textColor="#000000"
         android:textSize="32sp" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email or Phone Number"
@@ -32,14 +33,14 @@
         android:layout_height="52dp"
         android:layout_marginTop="15sp"
         android:autoLink="email"
-        android:background="#EFEFEF"
+        android:background="#80EFEFEF"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:paddingLeft="15sp"
         tools:text="newsbox@gmail.com" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
@@ -53,83 +54,43 @@
         android:layout_height="52dp"
         android:layout_marginTop="15sp"
         android:autoLink="email"
-        android:background="#EFEFEF"
+        android:background="#80EFEFEF"
         android:ems="10"
         android:inputType="textPassword"
         android:paddingLeft="15sp"
         tools:text="newsbox@gmail.com" />
 
-    <TextView
-        android:id="@+id/tvForgotPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15sp"
-        android:layout_marginBottom="15sp"
-        android:text="Forgot Password?"
-        android:textAlignment="textEnd"
-        android:textColor="#79B186"
-        android:textSize="18sp" />
-
     <Button
-        android:id="@+id/SignInBtn"
+        android:id="@+id/SignUpBtn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Sign In"
+        android:text="Sign Up"
+        android:layout_marginTop="15sp"
         android:textSize="20sp" />
 
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="185dp"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content">
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30sp"
-        android:text="Connect With"
-        android:textAlignment="center" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="15sp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:srcCompat="@mipmap/facebook" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            app:srcCompat="@mipmap/google" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            app:srcCompat="@mipmap/apple" />
-
-    </LinearLayout>
-
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40sp"
-        android:text="Don't have an account?"
+        android:text="Already have an account?"
         android:textAlignment="center" />
 
     <TextView
-        android:id="@+id/SignUpBtnTxt"
+        android:id="@+id/SignInBtnTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
-        android:text="Sign Up"
+        android:text="Sign In"
         android:textAlignment="center"
         android:textColor="#79B186" />
 
-
+</LinearLayout>
 </LinearLayout>

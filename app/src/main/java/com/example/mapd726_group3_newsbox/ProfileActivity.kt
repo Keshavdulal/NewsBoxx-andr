@@ -3,15 +3,16 @@ package com.example.mapd726_group3_newsbox
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
-import android.widget.Button
-import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -33,7 +34,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class Profile : AppCompatActivity() {
+class ProfileActivity : AppCompatActivity() {
 
 
     //database reference for reading from database
@@ -47,7 +48,7 @@ class Profile : AppCompatActivity() {
     private  lateinit var actionBar: ActionBar
     lateinit var appBarConfiguration: AppBarConfiguration
     lateinit var navController: NavController
-    lateinit var scrapedData
+    //lateinit var scrapedData
 
     //other variables
     private lateinit var articleArrayList: ArrayList<Article>
@@ -65,6 +66,25 @@ class Profile : AppCompatActivity() {
         actionBar = supportActionBar!!
         actionBar.title = "Explore"
 
+
+        val arrayAdapter = ArrayAdapter.createFromResource(this,R.array.news_sources,android.R.layout.simple_spinner_item)
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.spinner.adapter = arrayAdapter
+
+        binding.spinner.onItemSelectedListener = object:AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                val selectedNewsSource= p0?.getItemAtPosition(p2) as String
+                getNewsData(selectedNewsSource)
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+        }
+
+        binding.spinner.setSelection(0)
+
         //init firebase auth
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
@@ -75,13 +95,13 @@ class Profile : AppCompatActivity() {
         /*********************************    RECYCLERVIEW     *************************/
         // initializig needed variables
         articleArrayList = ArrayList<Article>()
-        article = Article(R.drawable.default_article,"","","")
+
         recyclerview = findViewById<RecyclerView>(R.id.rNewsList)
 
         // this creates a vertical layout Manager
         recyclerview.layoutManager = LinearLayoutManager(this)
 
-        getBbcData()
+
 
         /*********************************   RECYCLERVIEW_END    *************************/
 
@@ -203,48 +223,45 @@ class Profile : AppCompatActivity() {
 
 
     //gets list of values from BBC sccrapedFeed
-    private fun getBbcData()
+    private fun getNewsData(newsSource:String)
     {
         database= FirebaseFirestore.getInstance()
-
-        val list = database.collection("ScrapedFeed").document("BBC News - World")
+        articleArrayList.clear()
+        database.collection("ScrapedFeed").document(newsSource)
             .get().addOnSuccessListener {
                 if (it.exists()) {
                     val data = it.data
-//                    binding.data.text = data.toString()
-
-                    // binding.data.text = data.toString()
                     data?.let {
-                        for ((key, value) in data) {
-                            val v = value as Map<*, *>
-                            article.title = v["title"]as String
-                            Log.d(TAG, "article t "+article.title)
-                            article.body = v["summary"]as String
-                            Log.d(TAG, "article b "+article.body)
-                            article.source = v["content_html"] as String
-                            Log.d(TAG, "article s "+article.source)
-//                            val datePublished = v["date_published"]
-//                            Log.d(TAG, "$key -> $datePublished")
-//                            val guid = v["guid"]
-//                            Log.d(TAG, "$key -> $guid")
-//                            val url = v["url"]
-//                            Log.d(TAG, "$key -> $url")
-                            article.image = R.drawable.default_article
-                            articleArrayList.add(article)
-                            //articleArrayList.add(Article(R.drawable.default_article,title.toString(), summary.toString(),contentHtml.toString()))
-
+                        for ((key, value) in data){
+                            val map = value as Map<*,*>
+                            articleArrayList.add(map.toArticle(newsSource))
                         }
-                        val c = articleArrayList.count()
-                        // This will pass the ArrayList to our Adapter
-                        val recyclerViewAdapter = RecyclerViewAdapter(articleArrayList)
-
-                        // Setting the Adapter with the recyclerview
-                        recyclerview.adapter = recyclerViewAdapter
                     }
+                    /*val recyclerViewAdapter = RecyclerViewAdapter(articleArrayList){url->
+                        //on item click
+                        val intent=Intent(Intent.ACTION_VIEW)
+                        intent.data = Uri.parse(url)
+                        startActivity(intent)
+                    }
+                    recyclerview.adapter = recyclerViewAdapter*/
+
                 }
             }.addOnFailureListener{
                 Log.e("firebase", "Error getting data", it)
             }
+    }
+
+     fun Map<*,*>.toArticle(source: String):Article{
+        val v = this
+        val title = v["title"] as String
+        val summary = v["summary"] as String
+        val contentHtml = v["content_html"] as String
+        val datePublished = v["date_published"] as String
+        val guid = v["guid"] as String
+        val url = v["url"] as String
+
+        return Article(contentHtml,datePublished,guid,summary,title,url,source,R.drawable.default_article)
+
     }
 
     //gets list of values from CNN sccrapedFeed
@@ -356,8 +373,8 @@ class Profile : AppCompatActivity() {
 
         else {
             //user is null, user is not logged in, goto activity
-            startActivity(Intent(this, SignIn::class.java))
-            finish()
+            /*startActivity(Intent(this, SignInActivity::class.java))
+            finish()*/
         }
     }
 }

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.mapd726_group3_newsbox.HomeFragment"
-        android:label="Home"
+        android:label="News Box"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
@@ -53,7 +53,7 @@
         tools:layout="@layout/frgament_profile"
         android:id="@+id/profileFragment"
         android:name="com.example.mapd726_group3_newsbox.ProfileFragment"
-        android:label="ProfileFragment" >
+        android:label="News Box" >
         <action
             android:id="@+id/action_profileFragment_to_articleViewFragment"
             app:destination="@id/articleViewFragment" />

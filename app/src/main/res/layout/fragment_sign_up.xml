@@ -90,7 +90,7 @@
         android:layout_marginTop="5sp"
         android:text="Sign In"
         android:textAlignment="center"
-        android:textColor="#79B186" />
+        android:textColor="#e30613" />
 
 </LinearLayout>
 </LinearLayout>

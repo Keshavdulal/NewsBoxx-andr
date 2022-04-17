@@ -1,5 +1,6 @@
 package com.example.mapd726_group3_newsbox
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -95,13 +96,14 @@ class ProfileFragment : Fragment() {
                             articleArrayList.add(article)
                         }
                     }
+                    var context = requireContext()
                     val recyclerViewAdapter =
-                        RecyclerViewAdapter(articleArrayList, ::onItemClick, ::onBookmarkArticle)
+                        RecyclerViewAdapter(articleArrayList, ::onItemClick, ::onBookmarkArticle,context)
                     binding.rNewsList.adapter = recyclerViewAdapter
                     binding.progressBar.visibility=View.GONE
 
                 }
-            }.addOnFailureListener {
+            }.addOnFailureListener{
                 binding.progressBar.visibility=View.GONE
                 Log.e("firebase", "Error getting data", it)
             }
@@ -117,9 +119,9 @@ class ProfileFragment : Fragment() {
                     if (!it.isEmpty){
                         bookmarkedArticles.addAll(it.toObjects(Article::class.java))
                     }
-
+                    var context = requireContext()
                     val recyclerViewAdapter =
-                        RecyclerViewAdapter(bookmarkedArticles, ::onItemClick, ::onBookmarkArticle)
+                        RecyclerViewAdapter(bookmarkedArticles, ::onItemClick, ::onBookmarkArticle,context)
                     binding.rNewsList.adapter = recyclerViewAdapter
                     binding.progressBar.visibility=View.GONE
 

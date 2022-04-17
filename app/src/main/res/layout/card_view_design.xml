@@ -34,14 +34,15 @@
             android:gravity="right"
             android:layout_gravity="right">
 
+
             <ImageButton
                 android:id="@+id/share_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
                 android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 android:textColor="#e30613"
-                app:srcCompat="?attr/actionModeShareDrawable" />
+                app:srcCompat="@drawable/share" />
 
             <ImageButton
                 android:id="@+id/bookmark_image"
@@ -51,6 +52,14 @@
                 android:background="@android:color/transparent"
                 android:textColor="#e30613"
                 app:srcCompat="@drawable/ic_bookmark_border" />
+
+            <Button
+                android:id="@+id/button_share"
+                android:layout_width="10dp"
+                android:layout_marginRight="200dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Share" />
 
         </LinearLayout>
 

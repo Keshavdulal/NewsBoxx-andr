@@ -9,7 +9,7 @@
     <ImageButton
         android:id="@+id/logoImg"
         android:layout_width="match_parent"
-        android:layout_height="602dp"
+        android:layout_height="500dp"
         android:layout_gravity="center"
         android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,4 +28,5 @@
         android:text="Go"
         android:textSize="20sp"
         app:cornerRadius="100sp" />
+
 </LinearLayout>

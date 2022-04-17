@@ -7,13 +7,17 @@ import com.google.firebase.auth.FirebaseAuth
 import android.widget.TextView
 import android.widget.Button
 
+
 class ForgotPassword : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot_password)
 
         val btnSubmit = findViewById<Button>(R.id.btnSubmit)
         val forgotEmail = findViewById<TextView>(R.id.forgotEmail)
+
+
 
 
         btnSubmit.setOnClickListener {
@@ -49,4 +53,6 @@ class ForgotPassword : AppCompatActivity() {
             }
         }
     }
+
+
 }

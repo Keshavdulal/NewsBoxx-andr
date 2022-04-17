@@ -20,4 +20,8 @@
         <item>FOX News</item>
         <item>Saved</item>
     </string-array>
+
+
+    <string name="ID_BANNER">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ID_Interstitial">ca-app-pub-3940256099942544/1033173712</string>
 </resources>

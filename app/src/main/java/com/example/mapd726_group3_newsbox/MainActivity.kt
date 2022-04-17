@@ -14,6 +14,8 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.mapd726_group3_newsbox.databinding.ActivityMainBinding
 import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController:NavController
 
     lateinit var mAdView : AdView
-
+    private var mInterstitialAd: InterstitialAd? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,9 +38,64 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
 
         loadBannerAd()
+        loadInterAd()
 
+        val interAdBtn : Button = findViewById(R.id.interAds)
+        interAdBtn.setOnClickListener{
+            showInterAd()
+        }
     }
 
+
+    private fun showInterAd() {
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback(){
+                override fun onAdClicked() {
+                    super.onAdClicked()
+                }
+
+                override fun onAdDismissedFullScreenContent() {
+                    super.onAdDismissedFullScreenContent()
+                    val intent = Intent( this@MainActivity, MainActivity::class.java)
+                    startActivity(intent)
+                }
+
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    super.onAdFailedToShowFullScreenContent(p0)
+                }
+
+                override fun onAdImpression() {
+                    super.onAdImpression()
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    super.onAdShowedFullScreenContent()
+                }
+
+            }
+
+            mInterstitialAd?.show(this)
+        } else {
+            val intent = Intent( this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun loadInterAd() {
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+
+                mInterstitialAd = interstitialAd
+            }
+        })
+    }
 
     private fun loadBannerAd() {
         MobileAds.initialize(this) {}

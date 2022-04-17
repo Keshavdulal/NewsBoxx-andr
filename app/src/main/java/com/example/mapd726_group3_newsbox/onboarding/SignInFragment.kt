@@ -64,7 +64,7 @@ class SignInFragment :Fragment(){
         }
 
         binding.tvForgotPassword.setOnClickListener {
-            /*startActivity(Intent(this, ForgotPassword::class.java))*/
+//            startActivity(Intent(this, ForgotPassword::class.java))
         }
 
 

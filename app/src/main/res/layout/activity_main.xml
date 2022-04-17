@@ -28,14 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <Button-->
-<!--            android:id="@+id/interAds"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textSize="26dp"-->
-<!--            android:layout_centerInParent="true"-->
-<!--            android:text="Interstitial Ads"-->
-<!--            />-->
+
 
         <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adViewMain"
@@ -47,5 +40,16 @@
             ads:adUnitId="@string/ID_BANNER"
             tools:ignore="MissingClass"></com.google.android.gms.ads.AdView>
 
+        <Button
+            android:id="@+id/interAds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_centerInParent="true"
+            android:text="Advertisement"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="100dp"
+            android:textAllCaps="false"
+            />
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
